@@ -1,0 +1,91 @@
+N Queen @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22
+
+Follow the steps mentioned below to implement the idea:
+
+Start in the leftmost column
+If all queens are placed return true
+Try all rows in the current column. Do the following for every row.
+	If the queen can be placed safely in this row
+		Then mark this [row, column] as part of the solution and recursively check if placing queen here leads to a solution.
+		If placing the queen in [row, column] leads to a solution then return true.
+		If placing queen doesn’t lead to a solution then unmark this [row, column] then backtrack and try other rows.
+If all rows have been tried and valid solution is not found return false to trigger backtracking.
+
+time cmplx: O(N!)
+space cmple:O(N)
+
+
+Graph Coloring @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Create a recursive function that takes the graph, current index, number of vertices, and color array.
+If the current index is equal to the number of vertices. Print the color configuration in the color array.
+Assign a color to a vertex from the range (1 to m).
+	For every assigned color, check if the configuration is safe, (i.e. check if the adjacent vertices do not have the same color) and recursively call the function with the next index and number of vertices else return false
+	If any recursive function returns true then break the loop and return true
+	If no recursive function returns true then return false
+
+time cmplx: O(m**V)
+space cmplx:O(V)
+
+
+0/1 knapsack (backtracking)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Follow the steps to implement the above idea:
+
+Sort all items in decreasing order of ratio of value per unit weight so that an upper bound can be computed using Greedy Approach.
+Initialize maximum profit, maxProfit = 0, create an empty queue, Q, and create a dummy node of decision tree and enqueue it to Q. Profit and weight of dummy node are 0.
+Do following while Q is not empty.
+	Extract an item from Q. Let the extracted item be u.
+	Compute profit of next level node. If the profit is more than maxProfit, then 	update maxProfit.
+	Compute bound of next level node. If bound is more than maxProfit, then add next 	level node to Q.
+	Consider the case when next level node is not considered as part of solution and 	add a node to queue with level as next, but weight and profit without considering 	next level nodes.
+
+time cmplx: O(2**n)
+space cmple:O(N)
+
+
+SubSet Sum@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Let, S is a set of elements and m is the expected sum of subsets. Then:
+	Start with an empty set.
+	Add to the subset, the next element from the list.
+	If the subset is having sum m then stop with that subset as solution.
+	If the subset is not feasible or if we have reached the end of the set then 	backtrack through the subset until we find the most suitable value.
+	If the subset is feasible then repeat step 2.
+	If we have visited all the elements without finding a suitable subset and if no 	backtracking is possible then stop without solution.
+
+time cmplx: O(2**n)
+space cmple:O(N)
+
+
+Job Assingment @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+The selection rule for the next node in BFS and DFS is “blind”. i.e. the selection rule does not give any preference to a node that has a very good chance of getting the search to an answer node quickly. The search for an optimal solution can often be speeded by using an “intelligent” ranking function, also called an approximate cost function to avoid searching in sub-trees that do not contain an optimal solution. It is similar to BFS-like search but with one major optimization. Instead of following FIFO order, we choose a live node with least cost. We may not get optimal solution by following node with least promising cost, but it will provide very good chance of getting the search to an answer node quickly.
+
+For each worker, we choose job with minimum cost from list of unassigned jobs (take minimum entry from each row).
+
+time cmplx: O(N**3)
+space cmple:O(N)
+
+
+0/1 knapsack(BB)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Extract an item from Q
+Compute the profit of the next level node
+Compute the bound of the next level node
+Consider the case when the next level node is not considered as part of the solution
+Add a node to the queue with level as next, but weight and profit without considering next level nodes.
+
+time cmplx: O(N!)
+space cmple:O(N)
+
+
+travelling sales man problem@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+for current node in tree, we compute a bound on best possible solution that we can get if we down this node. If the bound on best possible solution itself is worse than current best (best computed so far), then we ignore the subtree rooted with the node. 
+Note that the cost through a node includes two costs. 
+1) Cost of reaching the node from the root (When we reach a node, we have this cost computed) 
+2) Cost of reaching an answer from current node to a leaf (We compute a bound on this cost to decide whether to ignore subtree with this node or not).
+
+time cmplx: O(N!)
+space cmple:O(N)
